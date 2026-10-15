@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+        name="viewport">
+    <meta content="mobile_tab" name="shell-type">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+        id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-container": "#1c2e00", "surface-container-low": "#f3f4f5", "on-primary": "#ffffff", "background": "#f8f9fa", "inverse-on-surface": "#f0f1f2", "tertiary-fixed": "#b5f64c", "primary": "#1f0b2e", "on-secondary-fixed-variant": "#5f279a", "outline-variant": "#cdc4cd", "secondary-fixed-dim": "#dbb8ff", "on-primary-container": "#a186b1", "on-secondary-container": "#4f1089", "on-primary-fixed": "#271236", "inverse-primary": "#d9bcea", "on-error": "#ffffff", "outline": "#7c757d", "primary-fixed-dim": "#d9bcea", "tertiary": "#0c1800", "on-tertiary-container": "#6b9f00", "error-container": "#ffdad6", "surface": "#f8f9fa", "surface-container-lowest": "#ffffff", "secondary-fixed": "#efdbff", "on-primary-fixed-variant": "#543e64", "on-surface": "#191c1d", "on-tertiary-fixed-variant": "#334f00", "surface-dim": "#d9dadb", "on-tertiary-fixed": "#121f00", "surface-container-high": "#e7e8e9", "surface-tint": "#6d557d", "on-error-container": "#93000a", "tertiary-fixed-dim": "#9ad930", "primary-fixed": "#f3daff", "secondary-container": "#be87fd", "error": "#ba1a1a", "on-background": "#191c1d", "inverse-surface": "#2e3132", "surface-bright": "#f8f9fa", "surface-container": "#edeeef", "surface-variant": "#e1e3e4", "secondary": "#7842b4", "on-tertiary": "#ffffff", "on-secondary-fixed": "#2b0052", "on-surface-variant": "#4b454d", "primary-container": "#352044", "surface-container-highest": "#e1e3e4", "on-secondary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "margin": "1rem", "space-sm": "0.5rem", "space-xl": "2rem", "space-md": "1rem", "gutter": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Space Grotesk"], "label-md": ["Space Grotesk"], "display-lg-mobile": ["Space Grotesk"], "label-sm": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "label-lg": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "display-lg": ["Space Grotesk"], "body-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"] }, "fontSize": { "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700" }], "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }] } } } }</script>
+    <style>
+        @layer base {
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                min-height: 100%;
+            }
+
+            .pb-safe {
+                padding-bottom: env(safe-area-inset-bottom, 0px);
+            }
+
+            .pt-safe {
+                padding-top: env(safe-area-inset-top, 0px);
+            }
+
+            main>:first-child {
+                margin-top: 0 !important;
+            }
+
+            main>:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col items-center min-h-screen">
+    <div class="w-full max-w-md flex flex-col min-h-screen relative bg-surface">
+        <header
+            class="fixed top-0 w-full max-w-md z-50 pt-safe bg-primary-container/95 backdrop-blur-xl text-on-primary shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+            <div class="h-16 px-gutter flex items-center justify-between">
+                <div class="flex items-center gap-space-sm">
+                    <div class="relative flex items-center justify-center">
+                        <div
+                            class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-secondary-container">
+                            <span class="material-symbols-outlined text-[24px]">pest_control</span></div><span
+                            class="absolute -bottom-1 -right-1 bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm px-1.5 py-0.5 rounded-full uppercase">LVL
+                            2</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-1.5">
+                            <h1 class="font-headline-sm text-headline-sm text-on-primary leading-none">Inicio</h1>
+                        </div><span class="font-label-sm text-label-sm text-tertiary-fixed-dim tracking-wide">Rango:
+                            Flojo Promedio</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-space-xs"><button aria-label="Notificaciones"
+                        class="w-11 h-11 flex items-center justify-center rounded-full text-on-primary-container hover:text-on-primary transition-colors"><span
+                            class="material-symbols-outlined text-[22px]">notifications</span></button><button
+                        aria-label="Ajustes"
+                        class="w-11 h-11 flex items-center justify-center rounded-full text-on-primary-container hover:text-on-primary transition-colors"><span
+                            class="material-symbols-outlined text-[22px]">settings</span></button>
+                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span
+                            class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1 flex flex-col relative w-full pt-16 pb-24 px-gutter bg-surface">
+            <div class="flex flex-col w-full pb-6 space-y-space-md">
+                <!-- 1. Header de Perfil y Tarjeta de Identidad -->
+                <section class="bg-surface-container-lowest p-space-md rounded-xl shadow-md flex flex-col gap-space-md">
+                    <div class="flex items-center gap-space-md">
+                        <!-- Avatar con marco y badge -->
+                        <div class="relative shrink-0">
+                            <div class="w-20 h-20 rounded-full overflow-hidden bg-primary-container p-1 shadow-sm">
+                                <img alt="Mascota Perezoso" class="w-full h-full object-cover rounded-full"
+                                    data-alt="Vector art of a lazy, cynical cartoon sloth wearing oversized geeky nerd glasses with heavy droopy eyelids, sarcastic smirk, vibrant deep violet and neon lime accents, crisp clean line art portrait"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFYOFl3HIRMbYZSu7SGF4PRBTbzxnX9yI7JcfyBot7hqqkeA8YEaghRAV947L9illooar9ZeyrcoAvJl0AaDLibxSWUC2kpI6XFDIjoZLXuQ0uCY3VppRhDR4tas4jB6BHGqzKw5sKN_IosivdeAn2H8mrZJdq0r8UPs4WoBfw0Kt9pHxlwX6d7QJiSE-gmErn7kUkKVt_JLu-P57b-es6DFs8tHD0d0ME5mWN_FWxqfWrk727SS-xiQ">
+                            </div>
+                            <div
+                                class="absolute -bottom-1 -right-1 bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-full shadow-sm flex items-center gap-0.5">
+                                <span class="material-symbols-outlined text-[13px]"
+                                    style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                                <span class="">LVL 2</span>
+                            </div>
+                        </div>
+                        <!-- Datos del Usuario -->
+                        <div class="flex flex-col min-w-0 flex-1">
+                            <div class="flex items-center gap-1.5 flex-wrap">
+                                <h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Alex
+                                    "Procrastinador"</h2>
+                            </div>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant truncate">Rango: Flojo Promedio
+                            </p>
+                            <div class="mt-1 flex items-center gap-1">
+                                <span
+                                    class="inline-flex items-center gap-1 bg-error-container text-on-error-container font-label-sm text-label-sm px-2 py-0.5 rounded-full">
+                                    <span
+                                        class="material-symbols-outlined text-[12px]">sentiment_very_dissatisfied</span>
+                                    Medalla del Deshonor
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick Stats Bento -->
+                    <div class="grid grid-cols-3 gap-2 bg-surface-container-low p-space-sm rounded-lg">
+                        <div
+                            class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-lowest shadow-sm text-center">
+                            <span class="font-headline-sm text-headline-sm text-secondary leading-none">24</span>
+                            <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Días Racha</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-lowest shadow-sm text-center">
+                            <span
+                                class="font-headline-sm text-headline-sm text-on-tertiary-container leading-none">3</span>
+                            <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Comodines</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-lowest shadow-sm text-center">
+                            <span class="font-headline-sm text-headline-sm text-error leading-none">42</span>
+                            <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Insultos / Sem</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- 2. Armario y Vergüenzas de la Mascota -->
+                <section class="bg-surface-container-lowest p-space-md rounded-xl shadow-md flex flex-col gap-space-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary text-[22px]">checkroom</span>
+                            <h3 class="font-headline-sm text-headline-sm text-on-surface">Armario y Vergüenzas</h3>
+                        </div>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">2/4
+                            Equipados</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Viste al perezoso con tus fracasos y
+                        pequeños logros amargos.</p>
+                    <!-- Cosmetic Grid -->
+                    <div class="grid grid-cols-2 gap-space-sm pt-1">
+                        <!-- Item 1: Gafas de Nerd (Equipado) -->
+                        <div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col relative shadow-sm">
+                            <div
+                                class="absolute top-2 right-2 bg-secondary text-on-secondary font-label-sm text-label-sm px-1.5 py-0.5 rounded-full">
+                                EQUIPADO
+                            </div>
+                            <div
+                                class="w-full h-20 rounded bg-surface-container flex items-center justify-center overflow-hidden mb-2">
+                                <img alt="Gafas de Nerd" class="h-16 w-16 object-contain"
+                                    data-alt="Digital sticker illustration of heavy black-rimmed nerd glasses with taped nose bridge, sharp comic vector art style, saturated colors isolated on neutral backdrop"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-0kpSd1ogVSmgHBSwAR-fGroaCcf03MZ16XN8MDhS8bMZvUuYSnOQaDGIACy2iBiPm65w3vF_vlbJkVm32svi3fQnowuoQthc9tz_eEOpcPG7DfnmCb6GEvgGojRhdHHIfUq80pe9WTY7TdqHL6eF5IB2pX6mIHHDFL9883AGh5ULC7AdRbjgFLcHbL8Bx-k2hzkRVotpXE7gNhZ3FZchSkyBMoH9UWg2u2mToza-NYOnTJQ9DWxjnA">
+                            </div>
+                            <span class="font-label-md text-label-md text-on-surface">Gafas de Nerd</span>
+                            <span class="font-body-sm text-body-sm text-secondary font-medium mt-0.5">+5 Cinismo
+                                pasivo</span>
+                        </div>
+                        <!-- Item 2: Traje Ejecutivo (Bloqueado) -->
+                        <div class="bg-surface-container rounded-lg p-space-sm flex flex-col relative opacity-80">
+                            <div
+                                class="absolute top-2 right-2 bg-primary-container text-on-primary-container p-1 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[14px]">lock</span>
+                            </div>
+                            <div
+                                class="w-full h-20 rounded bg-surface-container-high flex items-center justify-center overflow-hidden mb-2">
+                                <img alt="Traje Ejecutivo Bloqueado" class="h-16 w-16 object-contain opacity-50"
+                                    data-alt="Monochrome dimmed silhouette outline of a sharp formal business executive suit with tie, minimalistic comic vector style"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4iiUSGEfGY_BLrbP6B83LvgkL89bJwkrvMiDkKVGDz3LjC2wjNlaT1LAzfoSpZ3OLdufQJIB9osw1Uq4W4u4KJ183yVegckfHLK0f5dg16moh6gOVkiGQpIkWvojgdgX40y0UDeDqzg9ymhPliknZYL98H04h9kLgpMET_x_4L1aYAZoleDeA-s-vf7ric5wqmMB-CUaSy-xeZC7slnvTPZO4MjTntmJXdZ9iqTSMtMvgTnVz8Hc0EQ">
+                            </div>
+                            <span class="font-label-md text-label-md text-on-surface">Traje Ejecutivo</span>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Racha 30d o borrar
+                                TikTok</span>
+                        </div>
+                        <!-- Item 3: Gorra de Burro (Deshonra Equipado) -->
+                        <div class="bg-error-container/30 rounded-lg p-space-sm flex flex-col relative shadow-sm">
+                            <div
+                                class="absolute top-2 right-2 bg-error text-on-error font-label-sm text-label-sm px-1.5 py-0.5 rounded-full">
+                                CASTIGO
+                            </div>
+                            <div
+                                class="w-full h-20 rounded bg-error-container/40 flex items-center justify-center overflow-hidden mb-2">
+                                <img alt="Gorra de Burro" class="h-16 w-16 object-contain"
+                                    data-alt="Cartoon dunce conical shame hat with large letter D, playful sarcastic illustration style, isolated vector icon with deep purple accents"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsFq--ZnDJeM5y0N8cKN-BKSgjKFHc18HyHgO45yHT8c8g-uvabJIZohJH558xzfyT0Lsl-UKJmuxbpF5bbJ2doHaP5Rt9fLyWyYrKyCVw0J1Z3_9cJdgezLLp7FPOhGj8Z4UiwrfF4yoZ50m_pKkonSsJyS8tPDkKt92npTjjNGXM_7lrkf269Kr6yAqejWwZRMaUJQeeBEsIChh0cEmOg2bSdonePD092tsl2KZcB4Wgqw1PWbkiZA">
+                            </div>
+                            <span class="font-label-md text-label-md text-on-surface">Gorra de Burro</span>
+                            <span class="font-body-sm text-body-sm text-error mt-0.5">Por romper racha de 10 días</span>
+                        </div>
+                        <!-- Item 4: Capa de Superhéroe Patético (Bloqueado) -->
+                        <div class="bg-surface-container rounded-lg p-space-sm flex flex-col relative opacity-80">
+                            <div
+                                class="absolute top-2 right-2 bg-primary-container text-on-primary-container p-1 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[14px]">lock</span>
+                            </div>
+                            <div
+                                class="w-full h-20 rounded bg-surface-container-high flex items-center justify-center overflow-hidden mb-2">
+                                <img alt="Capa de Superhéroe" class="h-16 w-16 object-contain opacity-50"
+                                    data-alt="Tattered ragged comic hero cape graphic icon, low-key lighting, minimalist silhouette on dark soft background"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ06Lph7FS4JoyC67PkcjaFF-0HZxErf5sdJQfpqzDK0kBCuLm1q7SU3IDA9vZBt0cn2ucssA5XBil_Wi34siZ876JZPhzd-kFC1ajKrDXdVWh4IekcqDyTXLfezQCnkepgKxX9ATov5ImS-sOmlyZMhq4yeBGTjxeHjDz8q73LF9fHQGLLTUyzTR7W_-rp2ouQtwOcUQA_Ck2SSoJc9GfmXzR5x4oOhmcEcyFGhU_B5xbTceUItKP0w">
+                            </div>
+                            <span class="font-label-md text-label-md text-on-surface">Capa Patética</span>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">3 Pomodoros
+                                seguidos</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- 3. Slider Interactivo: Agresividad de la IA -->
+                <section
+                    class="bg-primary-container text-on-primary p-space-md rounded-xl shadow-lg flex flex-col gap-space-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-tertiary-fixed text-[24px]">psychology</span>
+                            <h3 class="font-headline-sm text-headline-sm text-on-primary">Agresividad IA</h3>
+                        </div>
+                        <span class="bg-error text-on-error font-label-md text-label-md px-2.5 py-0.5 rounded-full"
+                            id="level-badge">
+                            Crudo (90%)
+                        </span>
+                    </div>
+                    <!-- Range display & marks -->
+                    <div
+                        class="flex justify-between items-center text-on-primary-container font-label-sm text-label-sm pt-2">
+                        <span class="cursor-pointer"
+                            onclick="setAggression(10, 'Suave (10%)', 'Te recordará tus tareas con emojis tímidos.')">Suave</span>
+                        <span class="cursor-pointer"
+                            onclick="setAggression(50, 'Moderado (50%)', 'Comentarios sarcásticos estándar y suspiros audibles.')">Moderado</span>
+                        <span class="text-tertiary-fixed font-bold cursor-pointer"
+                            onclick="setAggression(90, 'Crudo (90%)', 'La IA no tendrá piedad con tus traumas ni tus excusas.')">Crudo</span>
+                        <span class="cursor-pointer text-error-container"
+                            onclick="setAggression(100, 'Humillación Total (100%)', 'Llamará a tus contactos para contarles que no hiciste la cama.')">Humillación</span>
+                    </div>
+                    <!-- Custom Stylized Input Range Container -->
+                    <div class="py-1">
+                        <input
+                            class="w-full h-3 bg-primary rounded-lg appearance-none cursor-pointer accent-tertiary-fixed"
+                            id="aggression-range" max="100" min="0" oninput="handleSliderChange(this.value)" step="1"
+                            type="range" value="90">
+                    </div>
+                    <!-- Feedback Box -->
+                    <div class="bg-primary/80 p-space-sm rounded-lg flex items-start gap-2 shadow-inner"
+                        id="aggression-desc-box">
+                        <span
+                            class="material-symbols-outlined text-tertiary-fixed text-[18px] shrink-0 mt-0.5">warning</span>
+                        <p class="font-body-sm text-body-sm text-on-primary leading-tight" id="aggression-description">
+                            "La IA no tendrá piedad con tus traumas ni tus excusas."
+                        </p>
+                    </div>
+                </section>
+                <!-- 4. Zona de Sanciones y Alarma QR -->
+                <section class="bg-surface-container-lowest p-space-md rounded-xl shadow-md flex flex-col gap-space-md">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-error text-[22px]">alarm_on</span>
+                        <div>
+                            <h3 class="font-headline-sm text-headline-sm text-on-surface">Zona de Sanciones</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Medidas extremas para gente sin
+                                fuerza de voluntad.</p>
+                        </div>
+                    </div>
+                    <!-- Botón Destacado Alarma QR -->
+                    <button
+                        class="w-full bg-error text-on-error py-3.5 px-space-md rounded-xl font-headline-sm text-headline-sm flex items-center justify-between shadow-md active:scale-[0.99] transition-transform">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[24px]">qr_code_scanner</span>
+                            <div class="text-left">
+                                <div class="font-headline-sm text-headline-sm leading-tight">Configurar Alarma QR</div>
+                                <span class="font-label-sm text-label-sm opacity-90 block">Activa sirena Nivel 5
+                                    obligatoria</span>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+                    </button>
+                    <!-- Caridad Enemiga Sanción -->
+                    <div
+                        class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between gap-space-sm">
+                        <div class="flex items-center gap-space-sm">
+                            <div
+                                class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-secondary text-[20px]">chat_bubble</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-label-md text-label-md text-on-surface">Castigo Social Activo</span>
+                                <span class="font-body-sm text-body-sm text-on-surface-variant">Envío automático de
+                                    mensaje humillante a tu grupo de amigos al posponer</span>
+                            </div>
+                        </div>
+                        <button
+                            class="bg-surface-container text-on-surface px-2.5 py-1 rounded font-label-sm text-label-sm hover:bg-surface-container-high">
+                            Editar
+                        </button>
+                    </div>
+                </section>
+                <!-- 5. Opciones del Sistema, Emergencia y Sesión -->
+                <section class="flex flex-col gap-2 pt-2">
+                    <!-- Botón de Emergencia: Pausa Temporal -->
+                    <button
+                        class="w-full bg-surface-container-high text-on-surface py-3 px-space-md rounded-xl font-label-lg text-label-lg flex items-center justify-between hover:bg-surface-container-highest transition-colors">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">pause_circle</span>
+                            <span class="">Pausa de Piedad (Comodín 24h)</span>
+                        </div>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant">3 disponibles</span>
+                    </button>
+                    <!-- Cierre de sesión -->
+                    <button
+                        class="w-full bg-surface-container-low text-error py-3 px-space-md rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-2 hover:bg-error-container/40 transition-colors">
+                        <span class="material-symbols-outlined text-[18px]">logout</span>
+                        <span class="">Cerrar Sesión</span>
+                    </button>
+                </section>
+            </div>
+            <script>
+                function handleSliderChange(val) {
+                    const numeric = parseInt(val);
+                    if (numeric <= 25) {
+                        setAggression(numeric, `Suave (${numeric}%)`, 'Te recordará tus tareas con emojis tímidos y palabras suaves.');
+                    } else if (numeric <= 65) {
+                        setAggression(numeric, `Moderado (${numeric}%)`, 'Sarcasmo balanceado y desaprobación pasivo-agresiva constante.');
+                    } else if (numeric <= 95) {
+                        setAggression(numeric, `Crudo (${numeric}%)`, 'La IA no tendrá piedad con tus traumas ni tus excusas.');
+                    } else {
+                        setAggression(numeric, `Humillación Total (${numeric}%)`, 'Llamará a tus contactos para contarles que no cumpliste tus metas.');
+                    }
+                }
+
+                function setAggression(val, label, text) {
+                    const slider = document.getElementById('aggression-range');
+                    const badge = document.getElementById('level-badge');
+                    const desc = document.getElementById('aggression-description');
+
+                    if (slider) slider.value = val;
+                    if (badge) badge.innerText = label;
+                    if (desc) desc.innerText = `"${text}"`;
+                }
+            </script>
+        </main>
+        <nav class="fixed bottom-0 w-full max-w-md z-50 pb-safe bg-primary-container/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+            data-active-classes="text-tertiary-fixed font-bold">
+            <div class="flex justify-around items-center h-16 px-space-xs"><a
+                    class="flex flex-col items-center justify-center min-w-[56px] h-11 text-on-primary-container hover:text-tertiary-fixed transition-colors"
+                    data-path="inicio" href="#"><span class="material-symbols-outlined text-[24px]">home</span><span
+                        class="font-label-sm text-label-sm mt-0.5">Inicio</span></a><a
+                    class="flex flex-col items-center justify-center min-w-[56px] h-11 text-on-primary-container hover:text-tertiary-fixed transition-colors"
+                    data-path="agenda" href="#"><span
+                        class="material-symbols-outlined text-[24px]">calendar_today</span><span
+                        class="font-label-sm text-label-sm mt-0.5">Agenda</span></a><a
+                    class="flex flex-col items-center justify-center min-w-[56px] h-11 text-on-primary-container hover:text-tertiary-fixed transition-colors"
+                    data-path="rachas" href="#"><span
+                        class="material-symbols-outlined text-[24px]">local_fire_department</span><span
+                        class="font-label-sm text-label-sm mt-0.5">Rachas</span></a><a
+                    class="flex flex-col items-center justify-center min-w-[56px] h-11 text-on-primary-container hover:text-tertiary-fixed transition-colors"
+                    data-path="roast" href="#"><span class="material-symbols-outlined text-[24px]">skull</span><span
+                        class="font-label-sm text-label-sm mt-0.5">Roast</span></a><a
+                    class="flex flex-col items-center justify-center min-w-[56px] h-11 text-on-primary-container hover:text-tertiary-fixed transition-colors"
+                    data-path="social" href="#"><span class="material-symbols-outlined text-[24px]">group</span><span
+                        class="font-label-sm text-label-sm mt-0.5">Social</span></a></div>
+        </nav>
+    </div>
+
+</body>
+
+</html>
