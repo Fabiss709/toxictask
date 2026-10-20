@@ -1,98 +1,350 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useState } from "react";
+import {
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+// Importa las dos pantallas que creamos
+import NuevaObligacionScreen from "../screens/NuevaObligacionScreen";
+import SocialScreen from "../screens/SocialScreen";
 
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+type TabType = "inicio" | "agenda" | "rachas" | "roast" | "social";
+
+export default function MainAppNavigator() {
+  const [currentTab, setCurrentTab] = useState<TabType>("inicio");
+
+  // Renderizado dinámico según la pestaña seleccionada
+  const renderScreen = () => {
+    switch (currentTab) {
+      case "inicio":
+        return <NuevaObligacionScreen />;
+      case "social":
+        return <SocialScreen />;
+      case "agenda":
+        return (
+          <View style={styles.placeholderContainer}>
+            <Text style={styles.placeholderIcon}>📅</Text>
+            <Text style={styles.placeholderTitle}>Agenda & Calendario</Text>
+            <Text style={styles.placeholderSub}>
+              Aquí van tus bloques y compromisos agendados.
+            </Text>
+          </View>
+        );
+      case "rachas":
+        return (
+          <View style={styles.placeholderContainer}>
+            <Text style={styles.placeholderIcon}>🔥</Text>
+            <Text style={styles.placeholderTitle}>Rachas de Supervivencia</Text>
+            <Text style={styles.placeholderSub}>
+              Tus días consecutivos sin procrastinar.
+            </Text>
+          </View>
+        );
+      case "roast":
+        return (
+          <View style={styles.placeholderContainer}>
+            <Text style={styles.placeholderIcon}>💀</Text>
+            <Text style={styles.placeholderTitle}>
+              Zona de Roast & Humillación
+            </Text>
+            <Text style={styles.placeholderSub}>
+              Auditorías destructivas de SlothBot en tiempo real.
+            </Text>
+          </View>
+        );
+      default:
+        return <NuevaObligacionScreen />;
+    }
+  };
+
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+    <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="light-content" backgroundColor="#231535" />
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+      {/* Barra superior global fija común en ambas vistas */}
+      <View style={styles.globalHeader}>
+        <View style={styles.headerLeft}>
+          <View style={styles.userBadge}>
+            <Text style={styles.skullBadgeIcon}>👾</Text>
+            <View style={styles.levelTag}>
+              <Text style={styles.levelTagText}>LVL 2</Text>
+            </View>
+          </View>
+          <View style={{ marginLeft: 8 }}>
+            <Text style={styles.headerTitle}>
+              {currentTab === "social" ? "Social" : "Inicio"}
+            </Text>
+            <Text style={styles.headerSubtitle}>Rango: Flojo Promedio</Text>
+          </View>
+        </View>
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
+        <View style={styles.headerRight}>
+          <TouchableOpacity style={styles.headerIconBtn}>
+            <Text style={styles.headerIcon}>🔔</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.headerIconBtn}>
+            <Text style={styles.headerIcon}>⚙️</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.avatarButton}>
+            <Text style={{ fontSize: 13 }}>👤</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
 
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
+      {/* Contenido de la pantalla seleccionada */}
+      <View style={styles.contentArea}>{renderScreen()}</View>
 
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+      {/* Barra inferior fija de navegación */}
+      <View style={styles.bottomNav}>
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => setCurrentTab("inicio")}
+        >
+          <Text
+            style={[
+              styles.navIcon,
+              currentTab === "inicio" && styles.navIconActive,
+            ]}
+          >
+            🏠
+          </Text>
+          <Text
+            style={[
+              styles.navText,
+              currentTab === "inicio" && styles.navTextActive,
+            ]}
+          >
+            Inicio
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => setCurrentTab("agenda")}
+        >
+          <Text
+            style={[
+              styles.navIcon,
+              currentTab === "agenda" && styles.navIconActive,
+            ]}
+          >
+            📅
+          </Text>
+          <Text
+            style={[
+              styles.navText,
+              currentTab === "agenda" && styles.navTextActive,
+            ]}
+          >
+            Agenda
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => setCurrentTab("rachas")}
+        >
+          <Text
+            style={[
+              styles.navIcon,
+              currentTab === "rachas" && styles.navIconActive,
+            ]}
+          >
+            🔥
+          </Text>
+          <Text
+            style={[
+              styles.navText,
+              currentTab === "rachas" && styles.navTextActive,
+            ]}
+          >
+            Rachas
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => setCurrentTab("roast")}
+        >
+          <Text
+            style={[
+              styles.navIcon,
+              currentTab === "roast" && styles.navIconActive,
+            ]}
+          >
+            💀
+          </Text>
+          <Text
+            style={[
+              styles.navText,
+              currentTab === "roast" && styles.navTextActive,
+            ]}
+          >
+            Roast
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => setCurrentTab("social")}
+        >
+          <Text
+            style={[
+              styles.navIcon,
+              currentTab === "social" && styles.navIconActive,
+            ]}
+          >
+            👥
+          </Text>
+          <Text
+            style={[
+              styles.navText,
+              currentTab === "social" && styles.navTextActive,
+            ]}
+          >
+            Social
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
   safeArea: {
     flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+    backgroundColor: "#231535",
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
+  globalHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "#231535",
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#36234f",
+  },
+  headerLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  userBadge: {
+    position: "relative",
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: "#382255",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  skullBadgeIcon: {
+    fontSize: 18,
+  },
+  levelTag: {
+    position: "absolute",
+    bottom: -4,
+    backgroundColor: "#84cc16",
+    borderRadius: 5,
+    paddingHorizontal: 4,
+    paddingVertical: 1,
+  },
+  levelTagText: {
+    fontSize: 8,
+    fontWeight: "bold",
+    color: "#130d20",
+  },
+  headerTitle: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#ffffff",
+  },
+  headerSubtitle: {
+    fontSize: 10,
+    color: "#84cc16",
+    fontWeight: "600",
+  },
+  headerRight: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+  },
+  headerIconBtn: {
+    padding: 4,
+  },
+  headerIcon: {
+    fontSize: 15,
+    color: "#a79abf",
+  },
+  avatarButton: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: "#382255",
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#54367e",
+  },
+  contentArea: {
     flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+    backgroundColor: "#f5f3f9",
   },
-  title: {
-    textAlign: 'center',
+  placeholderContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 24,
   },
-  code: {
-    textTransform: 'uppercase',
+  placeholderIcon: {
+    fontSize: 48,
+    marginBottom: 12,
   },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+  placeholderTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#231535",
+    marginBottom: 6,
+  },
+  placeholderSub: {
+    fontSize: 12,
+    color: "#7b748c",
+    textAlign: "center",
+  },
+  bottomNav: {
+    flexDirection: "row",
+    backgroundColor: "#231535",
+    paddingVertical: 8,
+    borderTopWidth: 1,
+    borderTopColor: "#36234f",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  navItem: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 4,
+    minWidth: 50,
+  },
+  navIcon: {
+    fontSize: 18,
+    color: "#7c6d94",
+    marginBottom: 2,
+  },
+  navIconActive: {
+    color: "#ffffff",
+  },
+  navText: {
+    fontSize: 10,
+    color: "#7c6d94",
+    fontWeight: "600",
+  },
+  navTextActive: {
+    color: "#ffffff",
+    fontWeight: "bold",
   },
 });
